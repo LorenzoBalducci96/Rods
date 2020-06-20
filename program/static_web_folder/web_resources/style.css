@@ -1,0 +1,19 @@
+.card-header {
+    padding:0px;
+}
+
+.card-body {
+    padding:0px;
+}
+
+.card[open="no"] .card-body{
+    height: 0px;
+}
+
+.card[open="yes"] .card-body{
+    height: auto;
+}
+
+#otsuCheckbox:checked ~ #manualThresholdConfig{
+    visibility: hidden;
+}

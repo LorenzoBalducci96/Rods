@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta charset="UTF-8">
+		<title>Rods</title>
+		<link rel="shortcut icon" href="web_resources/favicon.png">
+		
+		<script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+		<script src="web_resources/jquery.min.js"></script>
+		<link rel="stylesheet" href="web_resources/bootstrap.min.css">
+		<script src="web_resources/bootstrap.min.js"></script>
+
+		<script src="web_resources/Chart.bundle.min.js"></script>
+		<link rel="stylesheet" href="web_resources/Chart.min.css">
+		<link rel="stylesheet" href="web_resources/style.css">
+
+		<script type="text/javascript" src="/eel.js"></script>
+	</head>
+	<body>
+		<!--il player video è in display:none perchè serve solamente ad ospitare lo streaming del mediaDevice-->
+		<!--successivamente si estrae frame by frame dal player e lo si mette in una canvas per avere il base64 jpeg da inviare a python-->
+		<video id="video" style="display:none;" autoplay></video>
+		<canvas style="display:none;" id="canvas" width="320" height="240"></canvas>
+
+		<div class="container-fluid" style="margin-top: 4px;">
+			<div class="row">
+				<div class="col-6">
+					<div class="col-12">
+						<button class="btn btn-primary" onclick="analyzePhoto()">analyze</button>
+						<input style="margin-left:2px" type="file" onchange="onFileSelected(event)">
+					</div>
+				</div>
+				
+				<div class="col-6">
+					<button class="btn btn-primary" onclick="useCameraLiveVideo()">initialize camera</button>
+					<button class="btn btn-warning" onclick="start()">start</button>
+					<button class="btn btn-danger" onclick="stop()">stop</button>
+				</div>
+			</div>
+
+			<div class="row">
+				<div id="first-column" class="col-lg-3 col-md-4 col-sm-6 col-12 card-slot">
+					<div id="histogramCard" open="yes" class="card bg-light mb-3" style="max-width: 100%;">
+						<div class="card-header">
+							<label style="margin-left:4px;">live histogram</label>
+							<button class="btn" style="float: right;" onclick="openClose(this, histogramCard)">▲</button>
+						</div>
+						
+						<div id="histogramCardBody" open="yes" style="overflow: hidden;" class="card-body">
+							<canvas id="histogramCanvas" width="10" height="10"></canvas>
+						</div>
+						
+						<div class="card-footer">
+							<div><label>smoothing algorithm</label></div>
+							<div style="width:100%" class="btn-group btn-group-toggle" id="smoothingAlgorithm" data-toggle="buttons">
+								<label class="btn btn-sm btn-primary">
+								<input type="radio" name="options" value="blur" autocomplete="off"> mean
+								</label>
+								<label class="btn btn-sm btn-primary">
+								<input type="radio" name="options" value="median" autocomplete="off"> med
+								</label>
+								<label class="btn btn-sm btn-primary active">
+								<input type="radio" name="options" value="gaussian" autocomplete="off" checked> gauss
+								</label>
+								<label class="btn btn-sm btn-primary">
+								<input type="radio" name="options" value="none" autocomplete="off"> off
+								</label>
+							</div>
+							
+							<div><label>smooting kernel size = </label> <label id="smoothingKernelSliderLabel">5</label></div>
+							<input type="range" min=1 max=11 value=5 step=2 class="custom-range" onchange="updateSmoothingkernelLabel()" id="smoothingKernelSize">
+						</div>
+					</div>
+				</div>
+				
+				<div id="second-column" class="col-lg-3 col-md-4 col-sm-6 col-12 card-slot">
+					<div id="thresholdedImageCard" open="yes" class="card bg-light mb-3" style="max-width: 100%;">
+						<div class="card-header">
+							<label style="margin-left:4px;">binaryzed</label>
+							<button class="btn" style="float: right;" onclick="openClose(this, thresholdedImageCard)">▲</button>
+						</div>
+						<div id="thresholdedImageBody" open="yes" style="overflow: hidden;" class="card-body">
+							<canvas id="thresholdedImage" style="width:100%;"></canvas>
+						</div>
+						<div class="card-footer">		
+							<!--thresholding configuration-->
+							<label>thresholding algorithm</label>
+							<div class="bs-component" style="margin-bottom: 15px;">
+								<div class="btn-group btn-group-toggle" id="thresholdingAlgorithm" data-toggle="buttons">
+									<label class="btn btn-primary active">
+									<input onchange="hideManualThresholdConfig()" type="radio" name="options" value="otsu" autocomplete="off" checked> OTSU
+									</label>
+									<label class="btn btn-primary">
+									<input onchange="showManualThresholdConfig()" type="radio" name="options" value="manual" autocomplete="off"> MANUAL
+									</label>
+								</div>
+								
+								<div id="manualThresholdConfig" style="display: none;">
+									<label>manual threshold level = </label> <label id="manualThresholdLabel">127</label>
+									<input type="range" min=1 max=254 value=127 step=1 class="custom-range" onchange="updateManualThreshold()" id="manualThresholdValue">
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+						
+					<div id="dustFilteredImageCard" open="no" class="card bg-light mb-3" style="max-width: 100%;">
+						<div class="card-header">
+							<label style="margin-left:4px;">dust filtered</label>
+							<button class="btn" style="float: right;" onclick="openClose(this, dustFilteredImageCard)">▼</button>
+						</div>
+						<div id="dustFilteredImageBody" open="no" style="overflow: hidden;" class="card-body">
+							<canvas id="dustFilteredImage" style="width:100%;"></canvas>
+						</div>
+						<div class="card-footer">
+							<label>rods minimum size (dust filter) =</label> <label id="rodsMinimumSizeLabel">400</label>
+							<input type="range" min=0 max=1000 value=400 step=10 class="custom-range" onchange="updateMinimumRodsSize()" id="rodsMinimumSize">
+						</div>
+					</div>
+				</div>
+
+				<div id="third-column" class="col-lg-3 col-md-4 col-sm-6 col-12 card-slot">
+					<div id="joinImageCard" open="yes" class="card bg-light mb-3" style="max-width: 100%;">
+						<div class="card-header">
+							<label style="margin-left:4px;">CONNECTING POINTS</label>
+							<button class="btn" style="float: right;" onclick="openClose(this, joinImageCard)">▲</button>
+						</div>
+						<div id="joinImageBody" open="yes" style="overflow: hidden;" class="card-body">
+							<canvas id="joinImage" style="width:100%;"></canvas>
+						</div>
+						<div class="card-footer">
+							<div class="btn-group btn-group-toggle" id="cornersAlgorithm" data-toggle="buttons">
+								<label class="btn btn-sm btn-primary">
+								<input onchange="activeImageProcessingAlgorithm()" type="radio" name="options" value="imageProcessing" autocomplete="off"> image processing
+								</label>
+								<label class="btn btn-sm btn-primary active">
+								<input onchange="activeContoursAngleAlgorithm()" type="radio" name="options" value="contoursAngle" autocomplete="off" checked> contours angle
+								</label>
+							</div>
+
+							<div id="contoursAlgorithmConfiguration">
+								this algorithm analiyze the contours of the found rods for an angle less than 90 degrees
+								(a rod, doesn't have an angle less than 90 degrees)
+							</div>
+
+							<div id="imageProcessingAlgorithmConfig" style="display:none;">
+								this algorithm performs a harris corner detection for identifiyng points of connections of rods
+								<label>corners quality </label> <label id="cornersQualityLabel">10000000000</label>
+								<input type="range" min=0 max=30000000000 value=10000000000 step=1000000000 class="custom-range" onchange="updateCornersQuality()" id="cornersQualityValue">	
+								<label>block Size </label> <label id="cornersBlockSizeLabel">4</label>
+								<input type="range" min=2 max=20 value=4 step=2 class="custom-range" onchange="updateBlockSize()" id="cornersBlockSize">	
+								<label>sobel aperture size </label> <label id="cornersKSizeLabel">5</label>
+								<input type="range" min=3 max=31 value=5 step=2 class="custom-range" onchange="updateKSize()" id="cornersKSize">	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="col-lg-3 col-md-4 col-sm-6 col-12 card-slot">
+					<div id="outputImageCard" open="yes" class="card bg-light mb-3" style="max-width: 100%;">
+						<div class="card-header">
+							<label style="margin-left:4px;">output</label>
+							<button class="btn" style="float: right;" onclick="openClose(this, outputImageCard)">▲</button>
+						</div>
+						<div id="outputImageBody" open="yes" style="overflow: hidden;" class="card-body">
+							<canvas id="image" style="width:100%;"></canvas>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-12 card-slot">
+					<div id="rodsDataCard" open="yes" class="card bg-light mb-3" style="max-width: 100%;">
+						<div class="card-header">
+							<label style="margin-left:4px;">rods data</label>
+							<button class="btn" style="float: right;" onclick="openClose(this, rodsDataCard)">▲</button>
+						</div>
+						<div id="rodsDataBody" open="yes" style="overflow: hidden;" class="card-body">
+							<table class="table table-hover">
+								<thead class="thead-inverse">
+									<tr>
+										<th>type</th>
+										<th>position</th>
+										<th>orientation</th>
+										<th>width on baricentre</th>
+										<th>length</th>
+										<th>width</th>
+									</tr>
+									</thead>
+									<tbody id="rodsDataTableBody">
+										
+									</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-lg-3 col-md-4 col-sm-6 col-12 card-slot" style="display: none">
+					<div id="rodsContoursImageCard" open="no" class="card bg-light mb-3" style="max-width: 100%;">
+						<div class="card-header">
+							<label style="margin-left:4px;">rods contours</label>
+							<button class="btn" style="float: right;" onclick="openClose(this, rodsContoursImageCard)">▼</button>
+						</div>
+						<div id="rodsContoursCardBody" open="no" style="overflow: hidden;" class="card-body">
+							<canvas id="rodsContoursImage" style="width:100%;"></canvas>
+						</div>
+					</div>
+				</div>
+					
+				<div class="col-lg-3 col-md-4 col-sm-6 col-12 card-slot" style="display: none;">
+					<div id="contoursImageCard" open="no" class="card bg-light mb-3" style="max-width: 100%;">
+						<div class="card-header">
+							<label style="margin-left:4px;">contours</label>
+							<button class="btn" style="float: right;" onclick="openClose(this, contoursImageCard)">▼</button>
+						</div>
+						<div id="contoursCardBody" open="no" style="overflow: hidden;" class="card-body">
+							<canvas id="contoursImage" style="width:100%;"></canvas>
+						</div>
+					</div>
+				</div>
+
+				
+
+				
+				
+			</div>
+		</div>
+	</body>
+	<script src="web_resources/script.js"></script>
+	<script>
+		//just some scripts related to the UI
+		function openClose(button, card){
+			if(card.getAttribute("open") == "yes"){
+				card.setAttribute("open", "no");
+				button.innerHTML = "▼";
+			}else{
+				card.setAttribute("open", "yes");
+				button.innerHTML = "▲";
+			}
+		}
+
+		function showManualThresholdConfig(){
+			document.getElementById("manualThresholdConfig").style.display = "block";
+		}
+
+		function hideManualThresholdConfig(){
+			document.getElementById("manualThresholdConfig").style.display = "none";
+		}
+
+		//TODO refactor this 4 function with just one, using tags
+		function updateMinimumRodsSize(){
+			document.getElementById("rodsMinimumSizeLabel").innerHTML = document.getElementById("rodsMinimumSize").value
+		}
+
+		function updateManualThreshold(){
+			document.getElementById("manualThresholdLabel").innerHTML = document.getElementById("manualThresholdValue").value
+		}
+
+		function updateSmoothingkernelLabel(){
+			document.getElementById("smoothingKernelSliderLabel").innerHTML = document.getElementById("smoothingKernelSize").value
+		}		
+
+		function  updateCornersQuality(){
+			document.getElementById("cornersQualityLabel").innerHTML = document.getElementById("cornersQualityValue").value
+		}
+
+		function  updateKSize(){
+			document.getElementById("cornersKSizeLabel").innerHTML = document.getElementById("cornersKSize").value
+		}
+
+		function  updateBlockSize(){
+			document.getElementById("cornersBlockSizeLabel").innerHTML = document.getElementById("cornersBlockSize").value
+		}
+
+		function activeImageProcessingAlgorithm(){
+			cornersAlgorithm = "imageProcessing"
+			document.getElementById("imageProcessingAlgorithmConfig").style.display = "block";
+			document.getElementById("contoursAlgorithmConfiguration").style.display = "none";
+			
+		}
+
+		function activeContoursAngleAlgorithm(){
+			cornersAlgorithm = "contoursAngle"
+			document.getElementById("imageProcessingAlgorithmConfig").style.display = "none";
+			document.getElementById("contoursAlgorithmConfiguration").style.display = "block";
+		}
+
+		
+	</script>
+</html>
