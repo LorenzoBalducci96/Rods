@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="axiStream2AxiVideoStream.cpp" path="C:\FPGA_PROJECTS\hls\axiStream2AxiVideoStream\axiStream2AxiVideoStream.cpp"/>
+    <originFiles name="axiStream2AxiVideoStream.h" path="C:\FPGA_PROJECTS\hls\axiStream2AxiVideoStream\axiStream2AxiVideoStream.h"/>
+  </source>
+  <testbench/>
+</autopilotfilemapping:AutoPilotFileMapping>

@@ -1,0 +1,448 @@
+{
+  "Top": "binarization",
+  "RtlTop": "binarization",
+  "RtlPrefix": "",
+  "SourceLanguage": "cpp",
+  "ResetStyle": "control",
+  "GenerateBdFiles": "1",
+  "HostMachineBits": "64",
+  "Target": {
+    "Family": "zynq",
+    "Device": "xc7z010",
+    "Package": "clg400",
+    "Speed": "-1"
+  },
+  "HlsSolution": {"Config": [
+      "config_export -description=image_binarization_1",
+      "config_export -display_name=image_binarization_1",
+      "config_export -format=ip_catalog",
+      "config_export -rtl=verilog",
+      "config_export -vendor=balducci_lorenzo",
+      "config_export -version=1.0"
+    ]},
+  "ClockInfo": {
+    "ClockName": "ap_clk",
+    "ClockPeriod": "10",
+    "IsCombLogic": "0",
+    "II": "x",
+    "Latency": "2",
+    "Uncertainty": "1.25"
+  },
+  "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
+  "Ipx": {
+    "Vendor": "balducci_lorenzo",
+    "Library": "hls",
+    "Name": "binarization",
+    "Version": "1.0",
+    "DisplayName": "image_binarization_1",
+    "Revision": "",
+    "Description": "image_binarization_1",
+    "Taxonomy": "\/VIVADO_HLS_IP",
+    "AutoFamilySupport": ""
+  },
+  "Files": {
+    "CSource": ["..\/binarization.cpp"],
+    "Vhdl": ["impl\/vhdl\/binarization.vhd"],
+    "Verilog": ["impl\/verilog\/binarization.v"],
+    "Misc": ["impl\/misc\/logo.png"],
+    "DesignXml": "C:\/Users\/Lorenzo\/PROGETTI_FPGA\/binarization\/solution1\/.autopilot\/db\/binarization.design.xml"
+  },
+  "SubcoreInfo": {
+    "HasXpmMemory": false,
+    "HasClockedDsp": false,
+    "IP": []
+  },
+  "Interfaces": {
+    "INPUT_STREAM": {
+      "type": "axi4stream",
+      "mode": "slave",
+      "port_prefix": "INPUT_STREAM",
+      "has_tready": "1",
+      "ctype": {
+        "TDATA": {
+          "Type": "integer unsigned",
+          "Width": "8"
+        },
+        "TVALID": {"Type": "bool"},
+        "TREADY": {"Type": "bool"},
+        "TDEST": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TKEEP": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TSTRB": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TUSER": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TLAST": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TID": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        }
+      },
+      "port_width": {
+        "TDATA": "8",
+        "TDEST": "1",
+        "TID": "1",
+        "TKEEP": "1",
+        "TLAST": "1",
+        "TSTRB": "1",
+        "TUSER": "1"
+      }
+    },
+    "OUTPUT_STREAM": {
+      "type": "axi4stream",
+      "mode": "master",
+      "port_prefix": "OUTPUT_STREAM",
+      "has_tready": "1",
+      "ctype": {
+        "TDATA": {
+          "Type": "integer unsigned",
+          "Width": "8"
+        },
+        "TREADY": {"Type": "bool"},
+        "TVALID": {"Type": "bool"},
+        "TDEST": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TKEEP": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TSTRB": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TUSER": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TLAST": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        },
+        "TID": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        }
+      },
+      "port_width": {
+        "TDATA": "8",
+        "TDEST": "1",
+        "TID": "1",
+        "TKEEP": "1",
+        "TLAST": "1",
+        "TSTRB": "1",
+        "TUSER": "1"
+      }
+    },
+    "ap_clk": {
+      "type": "clock",
+      "ctype": {"CLK": {"Type": "bool"}},
+      "buses": "INPUT_STREAM OUTPUT_STREAM",
+      "reset": "ap_rst_n"
+    },
+    "ap_ctrl": {
+      "type": "ap_ctrl",
+      "ctrl_ports": "ap_start ap_done ap_idle ap_ready",
+      "ctype": {
+        "start": {"Type": "bool"},
+        "done": {"Type": "bool"},
+        "idle": {"Type": "bool"},
+        "ready": {"Type": "bool"}
+      }
+    },
+    "ap_rst_n": {
+      "type": "reset",
+      "polarity": "ACTIVE_LOW",
+      "ctype": {"RST": {"Type": "bool"}}
+    },
+    "inverted_V": {
+      "type": "data",
+      "dir": "in",
+      "width": "1",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        }}
+    },
+    "threshold": {
+      "type": "data",
+      "dir": "in",
+      "width": "8",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "8"
+        }}
+    },
+    "update_threshold_V": {
+      "type": "data",
+      "dir": "in",
+      "width": "1",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        }}
+    }
+  },
+  "RtlPorts": {
+    "ap_clk": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_rst_n": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_start": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_done": {
+      "dir": "out",
+      "width": "1"
+    },
+    "ap_idle": {
+      "dir": "out",
+      "width": "1"
+    },
+    "ap_ready": {
+      "dir": "out",
+      "width": "1"
+    },
+    "INPUT_STREAM_TDATA": {
+      "dir": "in",
+      "width": "8"
+    },
+    "INPUT_STREAM_TVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "INPUT_STREAM_TREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "INPUT_STREAM_TDEST": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "INPUT_STREAM_TKEEP": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "INPUT_STREAM_TSTRB": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "INPUT_STREAM_TUSER": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "INPUT_STREAM_TLAST": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "INPUT_STREAM_TID": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "threshold": {
+      "dir": "in",
+      "width": "8"
+    },
+    "update_threshold_V": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "inverted_V": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    },
+    "OUTPUT_STREAM_TDATA": {
+      "dir": "out",
+      "width": "8"
+    },
+    "OUTPUT_STREAM_TREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "OUTPUT_STREAM_TVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "OUTPUT_STREAM_TDEST": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "OUTPUT_STREAM_TKEEP": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "OUTPUT_STREAM_TSTRB": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "OUTPUT_STREAM_TUSER": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "OUTPUT_STREAM_TLAST": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "OUTPUT_STREAM_TID": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    }
+  },
+  "CPorts": {
+    "ap_ctrl": {
+      "interfaceRef": "ap_ctrl",
+      "dir": "out"
+    },
+    "INPUT_STREAM_V_data_V": {
+      "interfaceRef": "INPUT_STREAM",
+      "dir": "in"
+    },
+    "INPUT_STREAM_V_dest_V": {
+      "interfaceRef": "INPUT_STREAM",
+      "dir": "in"
+    },
+    "INPUT_STREAM_V_keep_V": {
+      "interfaceRef": "INPUT_STREAM",
+      "dir": "in"
+    },
+    "INPUT_STREAM_V_strb_V": {
+      "interfaceRef": "INPUT_STREAM",
+      "dir": "in"
+    },
+    "INPUT_STREAM_V_user_V": {
+      "interfaceRef": "INPUT_STREAM",
+      "dir": "in"
+    },
+    "INPUT_STREAM_V_last_V": {
+      "interfaceRef": "INPUT_STREAM",
+      "dir": "in"
+    },
+    "INPUT_STREAM_V_id_V": {
+      "interfaceRef": "INPUT_STREAM",
+      "dir": "in"
+    },
+    "threshold": {
+      "interfaceRef": "threshold",
+      "dir": "in",
+      "dataWidth": "8",
+      "handshakeRef": "ap_none"
+    },
+    "update_threshold_V": {
+      "interfaceRef": "update_threshold_V",
+      "dir": "in",
+      "dataWidth": "1",
+      "handshakeRef": "ap_none"
+    },
+    "inverted_V": {
+      "interfaceRef": "inverted_V",
+      "dir": "in",
+      "dataWidth": "1",
+      "handshakeRef": "ap_none"
+    },
+    "OUTPUT_STREAM_V_data_V": {
+      "interfaceRef": "OUTPUT_STREAM",
+      "dir": "out",
+      "firstOutLatency": "1"
+    },
+    "OUTPUT_STREAM_V_dest_V": {
+      "interfaceRef": "OUTPUT_STREAM",
+      "dir": "out",
+      "firstOutLatency": "1"
+    },
+    "OUTPUT_STREAM_V_keep_V": {
+      "interfaceRef": "OUTPUT_STREAM",
+      "dir": "out",
+      "firstOutLatency": "1"
+    },
+    "OUTPUT_STREAM_V_strb_V": {
+      "interfaceRef": "OUTPUT_STREAM",
+      "dir": "out",
+      "firstOutLatency": "1"
+    },
+    "OUTPUT_STREAM_V_user_V": {
+      "interfaceRef": "OUTPUT_STREAM",
+      "dir": "out",
+      "firstOutLatency": "1"
+    },
+    "OUTPUT_STREAM_V_last_V": {
+      "interfaceRef": "OUTPUT_STREAM",
+      "dir": "out",
+      "firstOutLatency": "1"
+    },
+    "OUTPUT_STREAM_V_id_V": {
+      "interfaceRef": "OUTPUT_STREAM",
+      "dir": "out",
+      "firstOutLatency": "1"
+    }
+  },
+  "ModuleInfo": {
+    "Hierarchy": {"ModuleName": "binarization"},
+    "Metrics": {"binarization": {
+        "Latency": {
+          "LatencyBest": "2",
+          "LatencyAvg": "2",
+          "LatencyWorst": "2",
+          "PipelineII": "3",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "1.25",
+          "Estimate": "2.544"
+        },
+        "Area": {
+          "FF": "123",
+          "LUT": "562",
+          "BRAM_18K": "0",
+          "DSP48E": "0"
+        }
+      }}
+  },
+  "Sdx": {
+    "Target": "none",
+    "ProfileOption": "0",
+    "ProfileType": "none",
+    "XO": "",
+    "KernelName": "binarization",
+    "EnableXoSwEmu": "1"
+  },
+  "GenData": {
+    "DataVersion": "0.1",
+    "Time": "2020-08-05 17:59:26 +0200",
+    "ToolName": "vivado_hls",
+    "ToolVersion": "2018.3"
+  }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [SCHED 204-21] The critical path in module 'Filter2D' consists of the following:&#xD;&#xA;&#x9;'add' operation of DSP[608] ('r_V_41_4_s', C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:290->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:303->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:514->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:1289) [600]  (0 ns)&#xD;&#xA;&#x9;'mul' operation of DSP[608] ('tmp31', C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:290->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:303->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:514->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:1289) [602]  (3.36 ns)&#xD;&#xA;&#x9;'add' operation of DSP[608] ('tmp34', C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:290->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:303->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:514->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:1289) [608]  (3.02 ns)&#xD;&#xA;&#x9;'add' operation ('tmp40', C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:290->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:303->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:514->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:1289) [622]  (2.2 ns)&#xD;&#xA;&#x9;'add' operation ('tmp41', C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:290->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:303->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:514->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:1289) [624]  (0 ns)&#xD;&#xA;&#x9;'add' operation ('sum_V_6_5', C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:290->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:303->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:514->C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:1289) [674]  (4.2 ns)" projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:07.184+0200" type="Warning"/>
+        <logs message="WARNING: [SCHED 204-21] Estimated clock period (12.7712ns) exceeds the target (target clock period: 13.5ns, clock uncertainty: 1.6875ns, effective delay budget: 11.8125ns)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:07.163+0200" type="Warning"/>
+        <logs message="WARNING: [SYN 201-103] Legalizing function name 'Block__proc' to 'Block_proc'." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:05.141+0200" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'k_buf[0].val[9]' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:400)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:05.050+0200" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'k_buf[0].val[7]' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:400)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:04.086+0200" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'k_buf[0].val[10]' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:400)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:04.066+0200" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'k_buf[0].val[13]' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:400)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:04.051+0200" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'k_buf[0].val[12]' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:400)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:04.030+0200" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'k_buf[0].val[11]' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:400)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:04.013+0200" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'k_buf[0].val[8]' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:400)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:03.997+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::AXIvideo2Mat&lt;8, 512, 512, 0>' to 'AXIvideo2Mat' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_io.h:63:9)" projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:03.981+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::Filter2D&lt;hls::BORDER_DEFAULT, 0, 0, ap_fixed&lt;16, 2, (ap_q_mode)0, (ap_o_mode)3, 0>, int, 512, 512, 7, 7>' to 'Filter2D' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:118:33)" projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:03.769+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::GaussianBlur&lt;7, 7, 0, 0, 512, 512>' to 'GaussianBlur' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_imgproc.h:2678:5)" projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:03.751+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::Mat2AXIvideo&lt;8, 512, 512, 0>' to 'Mat2AXIvideo' (C:/Xilinx/Vivado/2018.3/common/technology/autopilot/hls/hls_video_io.h:125:50)" projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:03.734+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 512 for loop 'loop_height' in function 'hls::Mat2AXIvideo&lt;8, 512, 512, 0>'." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:01.907+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 512 for loop 'loop_width' in function 'hls::Mat2AXIvideo&lt;8, 512, 512, 0>'." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:01.709+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img_input.data_stream.V' (fitler_step_one/filter.cpp:10)." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:25:00.320+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-41] Resource core 'AXIS' on port '&amp;output' is deprecated. Please use the interface directive to specify the AXI interface." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:24:49.916+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-41] Resource core 'AXIS' on port '&amp;input' is deprecated. Please use the interface directive to specify the AXI interface." projectName="fitler_step_one" solutionName="solution1" date="2020-08-04T18:24:37.321+0200" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

@@ -1,0 +1,907 @@
+
+
+================================================================
+== Vivado HLS Report for 'otsu'
+================================================================
+* Date:           Thu Aug  6 22:13:37 2020
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        otsu_evaluator_1
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z010clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.510|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+--------+-----+--------+---------+
+    |    Latency   |   Interval   | Pipeline|
+    | min |   max  | min |   max  |   Type  |
+    +-----+--------+-----+--------+---------+
+    |    5|  529357|    5|  529357|   none  |
+    +-----+--------+-----+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+------+--------+-----------+-----------+-----------+---------+----------+
+        |             |    Latency    | Iteration |  Initiation Interval  |   Trip  |          |
+        |  Loop Name  |  min |   max  |  Latency  |  achieved |   target  |  Count  | Pipelined|
+        +-------------+------+--------+-----------+-----------+-----------+---------+----------+
+        |- Loop 1     |   256|     256|          1|          -|          -|      256|    no    |
+        |- Loop 2     |  1024|    1024|          4|          -|          -|      256|    no    |
+        |- Loop 3     |  4064|  527558| 16 ~ 2077 |          -|          -|      254|    no    |
+        | + Loop 3.1  |     8|    1020|          4|          -|          -| 2 ~ 255 |    no    |
+        | + Loop 3.2  |     4|    1016|          4|          -|          -| 1 ~ 254 |    no    |
+        |- Loop 4     |   512|     512|          2|          -|          -|      256|    no    |
+        +-------------+------+--------+-----------+-----------+-----------+---------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 58
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	2  / (tmp_2 & !tmp_3)
+	3  / (tmp_3) | (!tmp_2)
+3 --> 
+	4  / true
+4 --> 
+	56  / (!or_cond)
+	5  / (or_cond)
+5 --> 
+	6  / (!tmp_s)
+	9  / (tmp_s)
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	5  / true
+9 --> 
+	10  / (!exitcond)
+	56  / (exitcond)
+10 --> 
+	11  / (!tmp_15)
+	14  / (tmp_15)
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	10  / true
+14 --> 
+	15  / (!exitcond1)
+	18  / (exitcond1 & !or_cond1)
+	55  / (exitcond1 & or_cond1)
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	14  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	28  / true
+28 --> 
+	29  / true
+29 --> 
+	30  / true
+30 --> 
+	31  / true
+31 --> 
+	32  / true
+32 --> 
+	33  / true
+33 --> 
+	34  / true
+34 --> 
+	35  / true
+35 --> 
+	36  / true
+36 --> 
+	37  / true
+37 --> 
+	38  / true
+38 --> 
+	39  / true
+39 --> 
+	40  / true
+40 --> 
+	41  / true
+41 --> 
+	42  / true
+42 --> 
+	43  / true
+43 --> 
+	44  / true
+44 --> 
+	45  / true
+45 --> 
+	46  / true
+46 --> 
+	47  / true
+47 --> 
+	48  / true
+48 --> 
+	49  / true
+49 --> 
+	50  / true
+50 --> 
+	51  / true
+51 --> 
+	52  / true
+52 --> 
+	53  / true
+53 --> 
+	54  / true
+54 --> 
+	55  / true
+55 --> 
+	9  / true
+56 --> 
+	57  / (or_cond & !tmp_13)
+	58  / (tmp_13) | (!or_cond)
+57 --> 
+	56  / true
+58 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 2.47>
+ST_1 : Operation 59 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8* %INPUT_STREAM_V_data_V), !map !32"   --->   Operation 59 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 60 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %INPUT_STREAM_V_keep_V), !map !38"   --->   Operation 60 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 61 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %INPUT_STREAM_V_strb_V), !map !42"   --->   Operation 61 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 62 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %INPUT_STREAM_V_user_V), !map !46"   --->   Operation 62 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 63 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %INPUT_STREAM_V_last_V), !map !50"   --->   Operation 63 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 64 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %INPUT_STREAM_V_id_V), !map !54"   --->   Operation 64 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 65 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %INPUT_STREAM_V_dest_V), !map !58"   --->   Operation 65 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 66 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8* %OUTPUT_STREAM_V_data_V), !map !62"   --->   Operation 66 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 67 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %OUTPUT_STREAM_V_keep_V), !map !66"   --->   Operation 67 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 68 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %OUTPUT_STREAM_V_strb_V), !map !70"   --->   Operation 68 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 69 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %OUTPUT_STREAM_V_user_V), !map !74"   --->   Operation 69 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 70 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %OUTPUT_STREAM_V_last_V), !map !78"   --->   Operation 70 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 71 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %OUTPUT_STREAM_V_id_V), !map !82"   --->   Operation 71 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 72 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %OUTPUT_STREAM_V_dest_V), !map !86"   --->   Operation 72 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 73 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8* %best_threshold), !map !90"   --->   Operation 73 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 74 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %updateThreshold_V), !map !94"   --->   Operation 74 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 75 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([5 x i8]* @otsu_str) nounwind"   --->   Operation 75 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 76 [1/1] (0.00ns)   --->   "%threshold = alloca i9, align 2" [otsu_evaluator_1/otsu.cpp:53]   --->   Operation 76 'alloca' 'threshold' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 77 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i1* %updateThreshold_V, [8 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [otsu_evaluator_1/otsu.cpp:8]   --->   Operation 77 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 78 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i8* %OUTPUT_STREAM_V_data_V, i1* %OUTPUT_STREAM_V_keep_V, i1* %OUTPUT_STREAM_V_strb_V, i1* %OUTPUT_STREAM_V_user_V, i1* %OUTPUT_STREAM_V_last_V, i1* %OUTPUT_STREAM_V_id_V, i1* %OUTPUT_STREAM_V_dest_V, [5 x i8]* @p_str2, i32 1, i32 1, [5 x i8]* @p_str3, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [14 x i8]* @p_str4, [1 x i8]* @p_str1) nounwind" [otsu_evaluator_1/otsu.cpp:10]   --->   Operation 78 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 79 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i8* %INPUT_STREAM_V_data_V, i1* %INPUT_STREAM_V_keep_V, i1* %INPUT_STREAM_V_strb_V, i1* %INPUT_STREAM_V_user_V, i1* %INPUT_STREAM_V_last_V, i1* %INPUT_STREAM_V_id_V, i1* %INPUT_STREAM_V_dest_V, [5 x i8]* @p_str2, i32 1, i32 1, [5 x i8]* @p_str3, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [13 x i8]* @p_str5, [1 x i8]* @p_str1) nounwind" [otsu_evaluator_1/otsu.cpp:11]   --->   Operation 79 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 80 [1/1] (0.00ns)   --->   "%empty = call { i8, i1, i1, i1, i1, i1, i1 } @_ssdm_op_Read.axis.volatile.i8P.i1P.i1P.i1P.i1P.i1P.i1P(i8* %INPUT_STREAM_V_data_V, i1* %INPUT_STREAM_V_keep_V, i1* %INPUT_STREAM_V_strb_V, i1* %INPUT_STREAM_V_user_V, i1* %INPUT_STREAM_V_last_V, i1* %INPUT_STREAM_V_id_V, i1* %INPUT_STREAM_V_dest_V)" [otsu_evaluator_1/otsu.cpp:29]   --->   Operation 80 'read' 'empty' <Predicate = true> <Delay = 0.00> <Core = "AXI4Stream">   --->   Core 5 'AXI4Stream' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+ST_1 : Operation 81 [1/1] (0.00ns)   --->   "%tmp_data_V = extractvalue { i8, i1, i1, i1, i1, i1, i1 } %empty, 0" [otsu_evaluator_1/otsu.cpp:29]   --->   Operation 81 'extractvalue' 'tmp_data_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 82 [1/1] (0.00ns)   --->   "%tmp_keep_V = extractvalue { i8, i1, i1, i1, i1, i1, i1 } %empty, 1" [otsu_evaluator_1/otsu.cpp:29]   --->   Operation 82 'extractvalue' 'tmp_keep_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 83 [1/1] (0.00ns)   --->   "%tmp_strb_V = extractvalue { i8, i1, i1, i1, i1, i1, i1 } %empty, 2" [otsu_evaluator_1/otsu.cpp:29]   --->   Operation 83 'extractvalue' 'tmp_strb_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 84 [1/1] (0.00ns)   --->   "%tmp_user_V = extractvalue { i8, i1, i1, i1, i1, i1, i1 } %empty, 3" [otsu_evaluator_1/otsu.cpp:29]   --->   Operation 84 'extractvalue' 'tmp_user_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 85 [1/1] (0.00ns)   --->   "%tmp_last_V = extractvalue { i8, i1, i1, i1, i1, i1, i1 } %empty, 4" [otsu_evaluator_1/otsu.cpp:29]   --->   Operation 85 'extractvalue' 'tmp_last_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 86 [1/1] (0.00ns)   --->   "%tmp_id_V = extractvalue { i8, i1, i1, i1, i1, i1, i1 } %empty, 5" [otsu_evaluator_1/otsu.cpp:29]   --->   Operation 86 'extractvalue' 'tmp_id_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 87 [1/1] (0.00ns)   --->   "%tmp_dest_V = extractvalue { i8, i1, i1, i1, i1, i1, i1 } %empty, 6" [otsu_evaluator_1/otsu.cpp:29]   --->   Operation 87 'extractvalue' 'tmp_dest_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 88 [1/1] (0.00ns)   --->   "%width_count_load = load i32* @width_count, align 4" [otsu_evaluator_1/otsu.cpp:31]   --->   Operation 88 'load' 'width_count_load' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 89 [1/1] (0.00ns)   --->   "%height_count_load = load i32* @height_count, align 4" [otsu_evaluator_1/otsu.cpp:31]   --->   Operation 89 'load' 'height_count_load' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 90 [1/1] (0.00ns) (grouped into LUT with out node tmp_2)   --->   "%tmp_1 = or i32 %height_count_load, %width_count_load" [otsu_evaluator_1/otsu.cpp:31]   --->   Operation 90 'or' 'tmp_1' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 91 [1/1] (2.47ns) (out node of the LUT)   --->   "%tmp_2 = icmp eq i32 %tmp_1, 0" [otsu_evaluator_1/otsu.cpp:31]   --->   Operation 91 'icmp' 'tmp_2' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 92 [1/1] (0.00ns)   --->   "br i1 %tmp_2, label %.preheader27.preheader, label %.loopexit" [otsu_evaluator_1/otsu.cpp:31]   --->   Operation 92 'br' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 93 [1/1] (1.76ns)   --->   "br label %.preheader27" [otsu_evaluator_1/otsu.cpp:33]   --->   Operation 93 'br' <Predicate = (tmp_2)> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 3.25>
+ST_2 : Operation 94 [1/1] (0.00ns)   --->   "%count = phi i9 [ %count_1, %1 ], [ 0, %.preheader27.preheader ]"   --->   Operation 94 'phi' 'count' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_2 : Operation 95 [1/1] (1.66ns)   --->   "%tmp_3 = icmp eq i9 %count, -256" [otsu_evaluator_1/otsu.cpp:33]   --->   Operation 95 'icmp' 'tmp_3' <Predicate = (tmp_2)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 96 [1/1] (0.00ns)   --->   "%empty_5 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256)"   --->   Operation 96 'speclooptripcount' 'empty_5' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_2 : Operation 97 [1/1] (1.82ns)   --->   "%count_1 = add i9 %count, 1" [otsu_evaluator_1/otsu.cpp:33]   --->   Operation 97 'add' 'count_1' <Predicate = (tmp_2)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 98 [1/1] (0.00ns)   --->   "br i1 %tmp_3, label %.loopexit.loopexit, label %1" [otsu_evaluator_1/otsu.cpp:33]   --->   Operation 98 'br' <Predicate = (tmp_2)> <Delay = 0.00>
+ST_2 : Operation 99 [1/1] (0.00ns)   --->   "%tmp_4 = zext i9 %count to i64" [otsu_evaluator_1/otsu.cpp:34]   --->   Operation 99 'zext' 'tmp_4' <Predicate = (tmp_2 & !tmp_3)> <Delay = 0.00>
+ST_2 : Operation 100 [1/1] (0.00ns)   --->   "%values_addr = getelementptr inbounds [256 x i32]* @values, i64 0, i64 %tmp_4" [otsu_evaluator_1/otsu.cpp:34]   --->   Operation 100 'getelementptr' 'values_addr' <Predicate = (tmp_2 & !tmp_3)> <Delay = 0.00>
+ST_2 : Operation 101 [1/1] (3.25ns)   --->   "store i32 0, i32* %values_addr, align 4" [otsu_evaluator_1/otsu.cpp:34]   --->   Operation 101 'store' <Predicate = (tmp_2 & !tmp_3)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_2 : Operation 102 [1/1] (0.00ns)   --->   "%scores_addr = getelementptr [256 x i14]* @scores, i64 0, i64 %tmp_4" [otsu_evaluator_1/otsu.cpp:35]   --->   Operation 102 'getelementptr' 'scores_addr' <Predicate = (tmp_2 & !tmp_3)> <Delay = 0.00>
+ST_2 : Operation 103 [1/1] (3.25ns)   --->   "store i14 0, i14* %scores_addr, align 2" [otsu_evaluator_1/otsu.cpp:35]   --->   Operation 103 'store' <Predicate = (tmp_2 & !tmp_3)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_2 : Operation 104 [1/1] (0.00ns)   --->   "br label %.preheader27" [otsu_evaluator_1/otsu.cpp:33]   --->   Operation 104 'br' <Predicate = (tmp_2 & !tmp_3)> <Delay = 0.00>
+ST_2 : Operation 105 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 105 'br' <Predicate = (tmp_2 & tmp_3)> <Delay = 0.00>
+ST_2 : Operation 106 [1/1] (0.00ns)   --->   "%tmp_6 = zext i8 %tmp_data_V to i64" [otsu_evaluator_1/otsu.cpp:39]   --->   Operation 106 'zext' 'tmp_6' <Predicate = (tmp_3) | (!tmp_2)> <Delay = 0.00>
+ST_2 : Operation 107 [1/1] (0.00ns)   --->   "%values_addr_1 = getelementptr inbounds [256 x i32]* @values, i64 0, i64 %tmp_6" [otsu_evaluator_1/otsu.cpp:39]   --->   Operation 107 'getelementptr' 'values_addr_1' <Predicate = (tmp_3) | (!tmp_2)> <Delay = 0.00>
+ST_2 : Operation 108 [2/2] (3.25ns)   --->   "%values_load = load i32* %values_addr_1, align 4" [otsu_evaluator_1/otsu.cpp:39]   --->   Operation 108 'load' 'values_load' <Predicate = (tmp_3) | (!tmp_2)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+
+State 3 <SV = 2> <Delay = 3.25>
+ST_3 : Operation 109 [1/2] (3.25ns)   --->   "%values_load = load i32* %values_addr_1, align 4" [otsu_evaluator_1/otsu.cpp:39]   --->   Operation 109 'load' 'values_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+
+State 4 <SV = 3> <Delay = 5.80>
+ST_4 : Operation 110 [1/1] (2.55ns)   --->   "%tmp_7 = add i32 %values_load, 1" [otsu_evaluator_1/otsu.cpp:39]   --->   Operation 110 'add' 'tmp_7' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 111 [1/1] (3.25ns)   --->   "store i32 %tmp_7, i32* %values_addr_1, align 4" [otsu_evaluator_1/otsu.cpp:39]   --->   Operation 111 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_4 : Operation 112 [1/1] (2.47ns)   --->   "%tmp_8 = icmp eq i32 %width_count_load, 511" [otsu_evaluator_1/otsu.cpp:41]   --->   Operation 112 'icmp' 'tmp_8' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 113 [1/1] (2.47ns)   --->   "%tmp_9 = icmp eq i32 %height_count_load, 511" [otsu_evaluator_1/otsu.cpp:41]   --->   Operation 113 'icmp' 'tmp_9' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 114 [1/1] (0.97ns)   --->   "%or_cond = and i1 %tmp_8, %tmp_9" [otsu_evaluator_1/otsu.cpp:41]   --->   Operation 114 'and' 'or_cond' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 115 [1/1] (0.00ns)   --->   "br i1 %or_cond, label %2, label %14" [otsu_evaluator_1/otsu.cpp:41]   --->   Operation 115 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 116 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_none.i1P(i1* %updateThreshold_V, i1 false)" [otsu_evaluator_1/otsu.cpp:163]   --->   Operation 116 'write' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_4 : Operation 117 [1/1] (0.00ns)   --->   "br label %15"   --->   Operation 117 'br' <Predicate = (!or_cond)> <Delay = 0.00>
+ST_4 : Operation 118 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str6)" [otsu_evaluator_1/otsu.cpp:41]   --->   Operation 118 'specregionbegin' 'tmp' <Predicate = (or_cond)> <Delay = 0.00>
+ST_4 : Operation 119 [1/1] (1.76ns)   --->   "br label %3" [otsu_evaluator_1/otsu.cpp:48]   --->   Operation 119 'br' <Predicate = (or_cond)> <Delay = 1.76>
+
+State 5 <SV = 4> <Delay = 3.25>
+ST_5 : Operation 120 [1/1] (0.00ns)   --->   "%sum = phi i32 [ 0, %2 ], [ %sum_1, %4 ]"   --->   Operation 120 'phi' 'sum' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 121 [1/1] (0.00ns)   --->   "%scoreIter = phi i9 [ 0, %2 ], [ %scoreIter_3, %4 ]"   --->   Operation 121 'phi' 'scoreIter' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 122 [1/1] (1.66ns)   --->   "%tmp_s = icmp eq i9 %scoreIter, -256" [otsu_evaluator_1/otsu.cpp:48]   --->   Operation 122 'icmp' 'tmp_s' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 123 [1/1] (0.00ns)   --->   "%empty_6 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256)"   --->   Operation 123 'speclooptripcount' 'empty_6' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 124 [1/1] (1.82ns)   --->   "%scoreIter_3 = add i9 %scoreIter, 1" [otsu_evaluator_1/otsu.cpp:48]   --->   Operation 124 'add' 'scoreIter_3' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 125 [1/1] (0.00ns)   --->   "br i1 %tmp_s, label %5, label %4" [otsu_evaluator_1/otsu.cpp:48]   --->   Operation 125 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 126 [1/1] (0.00ns)   --->   "%tmp_10 = zext i9 %scoreIter to i64" [otsu_evaluator_1/otsu.cpp:49]   --->   Operation 126 'zext' 'tmp_10' <Predicate = (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 127 [1/1] (0.00ns)   --->   "%values_addr_2 = getelementptr inbounds [256 x i32]* @values, i64 0, i64 %tmp_10" [otsu_evaluator_1/otsu.cpp:49]   --->   Operation 127 'getelementptr' 'values_addr_2' <Predicate = (!tmp_s)> <Delay = 0.00>
+ST_5 : Operation 128 [2/2] (3.25ns)   --->   "%values_load_1 = load i32* %values_addr_2, align 4" [otsu_evaluator_1/otsu.cpp:49]   --->   Operation 128 'load' 'values_load_1' <Predicate = (!tmp_s)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_5 : Operation 129 [1/1] (0.00ns)   --->   "%tmp_5 = call i14 @_ssdm_op_PartSelect.i14.i32.i32.i32(i32 %sum, i32 18, i32 31)" [otsu_evaluator_1/otsu.cpp:51]   --->   Operation 129 'partselect' 'tmp_5' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 130 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i9* %threshold, [8 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 130 'specinterface' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 131 [1/1] (0.00ns)   --->   "%tmp_10_cast = zext i14 %tmp_5 to i17" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 131 'zext' 'tmp_10_cast' <Predicate = (tmp_s)> <Delay = 0.00>
+ST_5 : Operation 132 [1/1] (1.76ns)   --->   "br label %6" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 132 'br' <Predicate = (tmp_s)> <Delay = 1.76>
+
+State 6 <SV = 5> <Delay = 3.25>
+ST_6 : Operation 133 [1/2] (3.25ns)   --->   "%values_load_1 = load i32* %values_addr_2, align 4" [otsu_evaluator_1/otsu.cpp:49]   --->   Operation 133 'load' 'values_load_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+
+State 7 <SV = 6> <Delay = 8.51>
+ST_7 : Operation 134 [1/1] (0.00ns)   --->   "%tmp_11 = zext i9 %scoreIter to i32" [otsu_evaluator_1/otsu.cpp:49]   --->   Operation 134 'zext' 'tmp_11' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 135 [1/1] (8.51ns)   --->   "%tmp_12 = mul i32 %values_load_1, %tmp_11" [otsu_evaluator_1/otsu.cpp:49]   --->   Operation 135 'mul' 'tmp_12' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+
+State 8 <SV = 7> <Delay = 2.55>
+ST_8 : Operation 136 [1/1] (2.55ns)   --->   "%sum_1 = add i32 %tmp_12, %sum" [otsu_evaluator_1/otsu.cpp:49]   --->   Operation 136 'add' 'sum_1' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 137 [1/1] (0.00ns)   --->   "br label %3" [otsu_evaluator_1/otsu.cpp:48]   --->   Operation 137 'br' <Predicate = true> <Delay = 0.00>
+
+State 9 <SV = 5> <Delay = 1.76>
+ST_9 : Operation 138 [1/1] (0.00ns)   --->   "%threshold_1 = phi i8 [ 1, %5 ], [ %tmp_39, %._crit_edge ]" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 138 'phi' 'threshold_1' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 139 [1/1] (0.00ns)   --->   "%threshold_1_cast4_ca = zext i8 %threshold_1 to i9" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 139 'zext' 'threshold_1_cast4_ca' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 140 [1/1] (1.55ns)   --->   "%exitcond = icmp eq i8 %threshold_1, -1" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 140 'icmp' 'exitcond' <Predicate = true> <Delay = 1.55> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 141 [1/1] (0.00ns)   --->   "%empty_7 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 254, i64 254, i64 254)"   --->   Operation 141 'speclooptripcount' 'empty_7' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 142 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %.preheader.preheader, label %.preheader26.preheader" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 142 'br' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 143 [1/1] (1.76ns)   --->   "br label %.preheader26" [otsu_evaluator_1/otsu.cpp:59]   --->   Operation 143 'br' <Predicate = (!exitcond)> <Delay = 1.76>
+ST_9 : Operation 144 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_none.i9P(i9* %threshold, i9 255)" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 144 'write' <Predicate = (exitcond)> <Delay = 0.00>
+ST_9 : Operation 145 [1/1] (1.76ns)   --->   "br label %.preheader" [otsu_evaluator_1/otsu.cpp:154]   --->   Operation 145 'br' <Predicate = (exitcond)> <Delay = 1.76>
+
+State 10 <SV = 6> <Delay = 3.25>
+ST_10 : Operation 146 [1/1] (0.00ns)   --->   "%scoreIter_1 = phi i9 [ %scoreIter_4, %7 ], [ 0, %.preheader26.preheader ]"   --->   Operation 146 'phi' 'scoreIter_1' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 147 [1/1] (0.00ns)   --->   "%sum_under_threshold = phi i32 [ %sum_under_threshold_1, %7 ], [ 0, %.preheader26.preheader ]"   --->   Operation 147 'phi' 'sum_under_threshold' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 148 [1/1] (0.00ns)   --->   "%probability_under_th = phi i32 [ %count_pixels_under_t, %7 ], [ 0, %.preheader26.preheader ]"   --->   Operation 148 'phi' 'probability_under_th' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 149 [1/1] (0.00ns)   --->   "%tmp_14 = zext i9 %scoreIter_1 to i32" [otsu_evaluator_1/otsu.cpp:59]   --->   Operation 149 'zext' 'tmp_14' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 150 [1/1] (1.66ns)   --->   "%tmp_15 = icmp ugt i9 %scoreIter_1, %threshold_1_cast4_ca" [otsu_evaluator_1/otsu.cpp:59]   --->   Operation 150 'icmp' 'tmp_15' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 151 [1/1] (0.00ns)   --->   "%empty_8 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 2, i64 255, i64 0)"   --->   Operation 151 'speclooptripcount' 'empty_8' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 152 [1/1] (1.82ns)   --->   "%scoreIter_4 = add i9 %scoreIter_1, 1" [otsu_evaluator_1/otsu.cpp:59]   --->   Operation 152 'add' 'scoreIter_4' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 153 [1/1] (0.00ns)   --->   "br i1 %tmp_15, label %8, label %7" [otsu_evaluator_1/otsu.cpp:59]   --->   Operation 153 'br' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 154 [1/1] (0.00ns)   --->   "%tmp_20 = zext i9 %scoreIter_1 to i64" [otsu_evaluator_1/otsu.cpp:60]   --->   Operation 154 'zext' 'tmp_20' <Predicate = (!tmp_15)> <Delay = 0.00>
+ST_10 : Operation 155 [1/1] (0.00ns)   --->   "%values_addr_3 = getelementptr inbounds [256 x i32]* @values, i64 0, i64 %tmp_20" [otsu_evaluator_1/otsu.cpp:60]   --->   Operation 155 'getelementptr' 'values_addr_3' <Predicate = (!tmp_15)> <Delay = 0.00>
+ST_10 : Operation 156 [2/2] (3.25ns)   --->   "%values_load_2 = load i32* %values_addr_3, align 4" [otsu_evaluator_1/otsu.cpp:60]   --->   Operation 156 'load' 'values_load_2' <Predicate = (!tmp_15)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_10 : Operation 157 [1/1] (0.00ns)   --->   "%tmp_19 = zext i8 %threshold_1 to i16" [otsu_evaluator_1/otsu.cpp:66]   --->   Operation 157 'zext' 'tmp_19' <Predicate = (tmp_15)> <Delay = 0.00>
+ST_10 : Operation 158 [1/1] (1.76ns)   --->   "br label %9" [otsu_evaluator_1/otsu.cpp:66]   --->   Operation 158 'br' <Predicate = (tmp_15)> <Delay = 1.76>
+
+State 11 <SV = 7> <Delay = 3.25>
+ST_11 : Operation 159 [1/2] (3.25ns)   --->   "%values_load_2 = load i32* %values_addr_3, align 4" [otsu_evaluator_1/otsu.cpp:60]   --->   Operation 159 'load' 'values_load_2' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+
+State 12 <SV = 8> <Delay = 8.51>
+ST_12 : Operation 160 [1/1] (8.51ns)   --->   "%tmp_21 = mul i32 %values_load_2, %tmp_14" [otsu_evaluator_1/otsu.cpp:60]   --->   Operation 160 'mul' 'tmp_21' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 161 [1/1] (2.55ns)   --->   "%count_pixels_under_t = add i32 %values_load_2, %probability_under_th" [otsu_evaluator_1/otsu.cpp:61]   --->   Operation 161 'add' 'count_pixels_under_t' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 13 <SV = 9> <Delay = 2.55>
+ST_13 : Operation 162 [1/1] (2.55ns)   --->   "%sum_under_threshold_1 = add i32 %tmp_21, %sum_under_threshold" [otsu_evaluator_1/otsu.cpp:60]   --->   Operation 162 'add' 'sum_under_threshold_1' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 163 [1/1] (0.00ns)   --->   "br label %.preheader26" [otsu_evaluator_1/otsu.cpp:59]   --->   Operation 163 'br' <Predicate = true> <Delay = 0.00>
+
+State 14 <SV = 7> <Delay = 5.33>
+ST_14 : Operation 164 [1/1] (0.00ns)   --->   "%scoreIter_2_in = phi i16 [ %tmp_19, %8 ], [ %scoreIter_2, %10 ]"   --->   Operation 164 'phi' 'scoreIter_2_in' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 165 [1/1] (0.00ns)   --->   "%sum_over_threshold = phi i32 [ 0, %8 ], [ %sum_over_threshold_1, %10 ]"   --->   Operation 165 'phi' 'sum_over_threshold' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 166 [1/1] (0.00ns)   --->   "%probability_over_thr = phi i32 [ 0, %8 ], [ %count_pixels_over_th, %10 ]"   --->   Operation 166 'phi' 'probability_over_thr' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 167 [1/1] (2.07ns)   --->   "%scoreIter_2 = add i16 %scoreIter_2_in, 1" [otsu_evaluator_1/otsu.cpp:66]   --->   Operation 167 'add' 'scoreIter_2' <Predicate = true> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 168 [1/1] (2.42ns)   --->   "%exitcond1 = icmp eq i16 %scoreIter_2_in, 255" [otsu_evaluator_1/otsu.cpp:66]   --->   Operation 168 'icmp' 'exitcond1' <Predicate = true> <Delay = 2.42> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 169 [1/1] (0.00ns)   --->   "%empty_9 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 1, i64 254, i64 0)"   --->   Operation 169 'speclooptripcount' 'empty_9' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 170 [1/1] (0.00ns)   --->   "br i1 %exitcond1, label %11, label %10" [otsu_evaluator_1/otsu.cpp:66]   --->   Operation 170 'br' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 171 [1/1] (0.00ns)   --->   "%tmp_27 = zext i16 %scoreIter_2 to i64" [otsu_evaluator_1/otsu.cpp:67]   --->   Operation 171 'zext' 'tmp_27' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_14 : Operation 172 [1/1] (0.00ns)   --->   "%values_addr_4 = getelementptr inbounds [256 x i32]* @values, i64 0, i64 %tmp_27" [otsu_evaluator_1/otsu.cpp:67]   --->   Operation 172 'getelementptr' 'values_addr_4' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_14 : Operation 173 [2/2] (3.25ns)   --->   "%values_load_3 = load i32* %values_addr_4, align 4" [otsu_evaluator_1/otsu.cpp:67]   --->   Operation 173 'load' 'values_load_3' <Predicate = (!exitcond1)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_14 : Operation 174 [1/1] (2.47ns)   --->   "%tmp_26 = icmp eq i32 %probability_over_thr, 0" [otsu_evaluator_1/otsu.cpp:71]   --->   Operation 174 'icmp' 'tmp_26' <Predicate = (exitcond1)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 175 [1/1] (2.47ns)   --->   "%tmp_30 = icmp eq i32 %probability_under_th, 0" [otsu_evaluator_1/otsu.cpp:71]   --->   Operation 175 'icmp' 'tmp_30' <Predicate = (exitcond1)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 176 [1/1] (0.97ns)   --->   "%or_cond1 = or i1 %tmp_26, %tmp_30" [otsu_evaluator_1/otsu.cpp:71]   --->   Operation 176 'or' 'or_cond1' <Predicate = (exitcond1)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 177 [1/1] (1.76ns)   --->   "br i1 %or_cond1, label %._crit_edge, label %12" [otsu_evaluator_1/otsu.cpp:71]   --->   Operation 177 'br' <Predicate = (exitcond1)> <Delay = 1.76>
+ST_14 : Operation 178 [36/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 178 'udiv' 'tmp_31' <Predicate = (exitcond1 & !or_cond1)> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 179 [36/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 179 'udiv' 'tmp_32' <Predicate = (exitcond1 & !or_cond1)> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 15 <SV = 8> <Delay = 3.25>
+ST_15 : Operation 180 [1/2] (3.25ns)   --->   "%values_load_3 = load i32* %values_addr_4, align 4" [otsu_evaluator_1/otsu.cpp:67]   --->   Operation 180 'load' 'values_load_3' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+
+State 16 <SV = 9> <Delay = 8.51>
+ST_16 : Operation 181 [1/1] (0.00ns)   --->   "%tmp_28 = zext i16 %scoreIter_2 to i32" [otsu_evaluator_1/otsu.cpp:67]   --->   Operation 181 'zext' 'tmp_28' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 182 [1/1] (8.51ns)   --->   "%tmp_29 = mul i32 %values_load_3, %tmp_28" [otsu_evaluator_1/otsu.cpp:67]   --->   Operation 182 'mul' 'tmp_29' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 183 [1/1] (2.55ns)   --->   "%count_pixels_over_th = add i32 %values_load_3, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:68]   --->   Operation 183 'add' 'count_pixels_over_th' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 17 <SV = 10> <Delay = 2.55>
+ST_17 : Operation 184 [1/1] (2.55ns)   --->   "%sum_over_threshold_1 = add i32 %tmp_29, %sum_over_threshold" [otsu_evaluator_1/otsu.cpp:67]   --->   Operation 184 'add' 'sum_over_threshold_1' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 185 [1/1] (0.00ns)   --->   "br label %9" [otsu_evaluator_1/otsu.cpp:66]   --->   Operation 185 'br' <Predicate = true> <Delay = 0.00>
+
+State 18 <SV = 8> <Delay = 4.13>
+ST_18 : Operation 186 [35/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 186 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_18 : Operation 187 [35/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 187 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 19 <SV = 9> <Delay = 4.13>
+ST_19 : Operation 188 [34/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 188 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_19 : Operation 189 [34/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 189 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 20 <SV = 10> <Delay = 4.13>
+ST_20 : Operation 190 [33/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 190 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_20 : Operation 191 [33/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 191 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 21 <SV = 11> <Delay = 4.13>
+ST_21 : Operation 192 [32/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 192 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_21 : Operation 193 [32/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 193 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 22 <SV = 12> <Delay = 4.13>
+ST_22 : Operation 194 [31/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 194 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_22 : Operation 195 [31/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 195 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 23 <SV = 13> <Delay = 4.13>
+ST_23 : Operation 196 [30/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 196 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_23 : Operation 197 [30/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 197 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 24 <SV = 14> <Delay = 4.13>
+ST_24 : Operation 198 [29/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 198 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 199 [29/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 199 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 25 <SV = 15> <Delay = 4.13>
+ST_25 : Operation 200 [28/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 200 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_25 : Operation 201 [28/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 201 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 26 <SV = 16> <Delay = 4.13>
+ST_26 : Operation 202 [27/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 202 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_26 : Operation 203 [27/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 203 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 27 <SV = 17> <Delay = 4.13>
+ST_27 : Operation 204 [26/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 204 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_27 : Operation 205 [26/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 205 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 28 <SV = 18> <Delay = 4.13>
+ST_28 : Operation 206 [25/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 206 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_28 : Operation 207 [25/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 207 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 29 <SV = 19> <Delay = 4.13>
+ST_29 : Operation 208 [24/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 208 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_29 : Operation 209 [24/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 209 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 30 <SV = 20> <Delay = 4.13>
+ST_30 : Operation 210 [23/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 210 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_30 : Operation 211 [23/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 211 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 31 <SV = 21> <Delay = 4.13>
+ST_31 : Operation 212 [22/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 212 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 213 [22/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 213 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 32 <SV = 22> <Delay = 4.13>
+ST_32 : Operation 214 [21/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 214 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_32 : Operation 215 [21/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 215 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 33 <SV = 23> <Delay = 4.13>
+ST_33 : Operation 216 [20/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 216 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_33 : Operation 217 [20/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 217 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 34 <SV = 24> <Delay = 4.13>
+ST_34 : Operation 218 [19/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 218 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_34 : Operation 219 [19/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 219 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 35 <SV = 25> <Delay = 4.13>
+ST_35 : Operation 220 [18/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 220 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_35 : Operation 221 [18/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 221 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 36 <SV = 26> <Delay = 4.13>
+ST_36 : Operation 222 [17/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 222 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_36 : Operation 223 [17/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 223 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 37 <SV = 27> <Delay = 4.13>
+ST_37 : Operation 224 [16/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 224 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_37 : Operation 225 [16/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 225 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 38 <SV = 28> <Delay = 4.13>
+ST_38 : Operation 226 [15/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 226 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_38 : Operation 227 [15/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 227 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 39 <SV = 29> <Delay = 4.13>
+ST_39 : Operation 228 [14/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 228 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_39 : Operation 229 [14/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 229 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 40 <SV = 30> <Delay = 4.13>
+ST_40 : Operation 230 [13/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 230 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_40 : Operation 231 [13/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 231 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 41 <SV = 31> <Delay = 4.13>
+ST_41 : Operation 232 [12/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 232 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_41 : Operation 233 [12/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 233 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 42 <SV = 32> <Delay = 4.13>
+ST_42 : Operation 234 [11/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 234 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_42 : Operation 235 [11/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 235 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 43 <SV = 33> <Delay = 4.13>
+ST_43 : Operation 236 [10/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 236 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_43 : Operation 237 [10/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 237 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 44 <SV = 34> <Delay = 4.13>
+ST_44 : Operation 238 [9/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 238 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_44 : Operation 239 [9/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 239 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 45 <SV = 35> <Delay = 4.13>
+ST_45 : Operation 240 [8/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 240 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_45 : Operation 241 [8/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 241 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 46 <SV = 36> <Delay = 4.13>
+ST_46 : Operation 242 [7/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 242 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_46 : Operation 243 [7/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 243 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 47 <SV = 37> <Delay = 4.13>
+ST_47 : Operation 244 [6/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 244 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_47 : Operation 245 [6/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 245 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 48 <SV = 38> <Delay = 4.13>
+ST_48 : Operation 246 [5/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 246 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_48 : Operation 247 [5/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 247 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 49 <SV = 39> <Delay = 4.13>
+ST_49 : Operation 248 [4/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 248 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_49 : Operation 249 [4/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 249 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 50 <SV = 40> <Delay = 4.13>
+ST_50 : Operation 250 [3/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 250 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_50 : Operation 251 [3/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 251 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 51 <SV = 41> <Delay = 4.13>
+ST_51 : Operation 252 [2/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 252 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_51 : Operation 253 [2/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 253 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+
+State 52 <SV = 42> <Delay = 6.21>
+ST_52 : Operation 254 [1/36] (4.13ns)   --->   "%tmp_31 = udiv i32 %sum_under_threshold, %probability_under_th" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 254 'udiv' 'tmp_31' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_52 : Operation 255 [1/1] (0.00ns)   --->   "%meanUnderThreshold = trunc i32 %tmp_31 to i16" [otsu_evaluator_1/otsu.cpp:72]   --->   Operation 255 'trunc' 'meanUnderThreshold' <Predicate = true> <Delay = 0.00>
+ST_52 : Operation 256 [1/36] (4.13ns)   --->   "%tmp_32 = udiv i32 %sum_over_threshold, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 256 'udiv' 'tmp_32' <Predicate = true> <Delay = 4.13> <Core = "DivnS_SEQ">   --->   Core 24 'DivnS_SEQ' <Latency = 35> <II = 16> <Delay = 4.13> <FuncUnit> <Opcode : 'sdiv' 'srem' 'udiv' 'urem'> <InPorts = 2> <OutPorts = 1>
+ST_52 : Operation 257 [1/1] (0.00ns)   --->   "%meanOverThreshold = trunc i32 %tmp_32 to i16" [otsu_evaluator_1/otsu.cpp:73]   --->   Operation 257 'trunc' 'meanOverThreshold' <Predicate = true> <Delay = 0.00>
+ST_52 : Operation 258 [1/1] (0.00ns)   --->   "%tmp_35_cast = zext i16 %meanUnderThreshold to i17" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 258 'zext' 'tmp_35_cast' <Predicate = true> <Delay = 0.00>
+ST_52 : Operation 259 [1/1] (2.07ns)   --->   "%tmp_33 = sub i17 %tmp_35_cast, %tmp_10_cast" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 259 'sub' 'tmp_33' <Predicate = true> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_52 : Operation 260 [1/1] (0.00ns)   --->   "%tmp_39_cast = zext i16 %meanOverThreshold to i17" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 260 'zext' 'tmp_39_cast' <Predicate = true> <Delay = 0.00>
+ST_52 : Operation 261 [1/1] (2.07ns)   --->   "%tmp_35 = sub i17 %tmp_39_cast, %tmp_10_cast" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 261 'sub' 'tmp_35' <Predicate = true> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 53 <SV = 43> <Delay = 8.51>
+ST_53 : Operation 262 [1/1] (0.00ns)   --->   "%tmp_36_cast = sext i17 %tmp_33 to i32" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 262 'sext' 'tmp_36_cast' <Predicate = true> <Delay = 0.00>
+ST_53 : Operation 263 [1/1] (8.51ns)   --->   "%tmp1 = mul i32 %tmp_36_cast, %probability_under_th" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 263 'mul' 'tmp1' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_53 : Operation 264 [1/1] (0.00ns)   --->   "%tmp_40_cast = sext i17 %tmp_35 to i32" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 264 'sext' 'tmp_40_cast' <Predicate = true> <Delay = 0.00>
+ST_53 : Operation 265 [1/1] (8.51ns)   --->   "%tmp2 = mul i32 %tmp_40_cast, %probability_over_thr" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 265 'mul' 'tmp2' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+
+State 54 <SV = 44> <Delay = 8.51>
+ST_54 : Operation 266 [1/1] (8.51ns)   --->   "%tmp_34 = mul i32 %tmp_36_cast, %tmp1" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 266 'mul' 'tmp_34' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_54 : Operation 267 [1/1] (8.51ns)   --->   "%tmp_36 = mul i32 %tmp_40_cast, %tmp2" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 267 'mul' 'tmp_36' <Predicate = true> <Delay = 8.51> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 8.51> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+
+State 55 <SV = 45> <Delay = 7.57>
+ST_55 : Operation 268 [1/1] (2.55ns)   --->   "%tmp_37 = add i32 %tmp_34, %tmp_36" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 268 'add' 'tmp_37' <Predicate = (!or_cond1)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_55 : Operation 269 [1/1] (0.00ns)   --->   "%computedScore_cast = call i14 @_ssdm_op_PartSelect.i14.i32.i32.i32(i32 %tmp_37, i32 18, i32 31)" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 269 'partselect' 'computedScore_cast' <Predicate = (!or_cond1)> <Delay = 0.00>
+ST_55 : Operation 270 [1/1] (1.76ns)   --->   "br label %._crit_edge" [otsu_evaluator_1/otsu.cpp:90]   --->   Operation 270 'br' <Predicate = (!or_cond1)> <Delay = 1.76>
+ST_55 : Operation 271 [1/1] (0.00ns)   --->   "%computedScore1 = phi i14 [ %computedScore_cast, %12 ], [ 0, %11 ]" [otsu_evaluator_1/otsu.cpp:78]   --->   Operation 271 'phi' 'computedScore1' <Predicate = true> <Delay = 0.00>
+ST_55 : Operation 272 [1/1] (0.00ns)   --->   "%tmp_38 = zext i8 %threshold_1 to i64" [otsu_evaluator_1/otsu.cpp:94]   --->   Operation 272 'zext' 'tmp_38' <Predicate = true> <Delay = 0.00>
+ST_55 : Operation 273 [1/1] (0.00ns)   --->   "%scores_addr_2 = getelementptr [256 x i14]* @scores, i64 0, i64 %tmp_38" [otsu_evaluator_1/otsu.cpp:94]   --->   Operation 273 'getelementptr' 'scores_addr_2' <Predicate = true> <Delay = 0.00>
+ST_55 : Operation 274 [1/1] (3.25ns)   --->   "store i14 %computedScore1, i14* %scores_addr_2, align 2" [otsu_evaluator_1/otsu.cpp:94]   --->   Operation 274 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_55 : Operation 275 [1/1] (1.91ns)   --->   "%tmp_39 = add i8 %threshold_1, 1" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 275 'add' 'tmp_39' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_55 : Operation 276 [1/1] (0.00ns)   --->   "br label %6" [otsu_evaluator_1/otsu.cpp:54]   --->   Operation 276 'br' <Predicate = true> <Delay = 0.00>
+
+State 56 <SV = 6> <Delay = 6.79>
+ST_56 : Operation 277 [1/1] (0.00ns)   --->   "%record_id = phi i32 [ %record_id_2_record_i, %._crit_edge28 ], [ 0, %.preheader.preheader ]" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 277 'phi' 'record_id' <Predicate = (or_cond)> <Delay = 0.00>
+ST_56 : Operation 278 [1/1] (0.00ns)   --->   "%record = phi i32 [ %record_2_record, %._crit_edge28 ], [ 0, %.preheader.preheader ]" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 278 'phi' 'record' <Predicate = (or_cond)> <Delay = 0.00>
+ST_56 : Operation 279 [1/1] (0.00ns)   --->   "%count1 = phi i9 [ %count_2, %._crit_edge28 ], [ 0, %.preheader.preheader ]"   --->   Operation 279 'phi' 'count1' <Predicate = (or_cond)> <Delay = 0.00>
+ST_56 : Operation 280 [1/1] (1.66ns)   --->   "%tmp_13 = icmp eq i9 %count1, -256" [otsu_evaluator_1/otsu.cpp:154]   --->   Operation 280 'icmp' 'tmp_13' <Predicate = (or_cond)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_56 : Operation 281 [1/1] (0.00ns)   --->   "%empty_10 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256)"   --->   Operation 281 'speclooptripcount' 'empty_10' <Predicate = (or_cond)> <Delay = 0.00>
+ST_56 : Operation 282 [1/1] (1.82ns)   --->   "%count_2 = add i9 %count1, 1" [otsu_evaluator_1/otsu.cpp:154]   --->   Operation 282 'add' 'count_2' <Predicate = (or_cond)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_56 : Operation 283 [1/1] (0.00ns)   --->   "br i1 %tmp_13, label %13, label %._crit_edge28" [otsu_evaluator_1/otsu.cpp:154]   --->   Operation 283 'br' <Predicate = (or_cond)> <Delay = 0.00>
+ST_56 : Operation 284 [1/1] (0.00ns)   --->   "%tmp_17 = zext i9 %count1 to i64" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 284 'zext' 'tmp_17' <Predicate = (or_cond & !tmp_13)> <Delay = 0.00>
+ST_56 : Operation 285 [1/1] (0.00ns)   --->   "%scores_addr_1 = getelementptr [256 x i14]* @scores, i64 0, i64 %tmp_17" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 285 'getelementptr' 'scores_addr_1' <Predicate = (or_cond & !tmp_13)> <Delay = 0.00>
+ST_56 : Operation 286 [2/2] (3.25ns)   --->   "%scores_load = load i14* %scores_addr_1, align 2" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 286 'load' 'scores_load' <Predicate = (or_cond & !tmp_13)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_56 : Operation 287 [1/1] (0.00ns)   --->   "%tmp_16 = trunc i32 %record_id to i8" [otsu_evaluator_1/otsu.cpp:160]   --->   Operation 287 'trunc' 'tmp_16' <Predicate = (or_cond & tmp_13)> <Delay = 0.00>
+ST_56 : Operation 288 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_auto.i8P(i8* %best_threshold, i8 %tmp_16)" [otsu_evaluator_1/otsu.cpp:160]   --->   Operation 288 'write' <Predicate = (or_cond & tmp_13)> <Delay = 0.00>
+ST_56 : Operation 289 [1/1] (0.00ns)   --->   "call void @_ssdm_op_Write.ap_none.i1P(i1* %updateThreshold_V, i1 true)" [otsu_evaluator_1/otsu.cpp:161]   --->   Operation 289 'write' <Predicate = (or_cond & tmp_13)> <Delay = 0.00>
+ST_56 : Operation 290 [1/1] (0.00ns)   --->   "%empty_11 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str6, i32 %tmp)" [otsu_evaluator_1/otsu.cpp:162]   --->   Operation 290 'specregionend' 'empty_11' <Predicate = (or_cond & tmp_13)> <Delay = 0.00>
+ST_56 : Operation 291 [1/1] (0.00ns)   --->   "br label %15" [otsu_evaluator_1/otsu.cpp:162]   --->   Operation 291 'br' <Predicate = (or_cond & tmp_13)> <Delay = 0.00>
+ST_56 : Operation 292 [1/1] (2.55ns)   --->   "%tmp_22 = add i32 %width_count_load, 1" [otsu_evaluator_1/otsu.cpp:166]   --->   Operation 292 'add' 'tmp_22' <Predicate = (tmp_13) | (!or_cond)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_56 : Operation 293 [1/1] (2.47ns)   --->   "%tmp_23 = icmp eq i32 %tmp_22, 512" [otsu_evaluator_1/otsu.cpp:167]   --->   Operation 293 'icmp' 'tmp_23' <Predicate = (tmp_13) | (!or_cond)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_56 : Operation 294 [1/1] (1.76ns)   --->   "br i1 %tmp_23, label %16, label %._crit_edge29" [otsu_evaluator_1/otsu.cpp:167]   --->   Operation 294 'br' <Predicate = (tmp_13) | (!or_cond)> <Delay = 1.76>
+ST_56 : Operation 295 [1/1] (2.55ns)   --->   "%tmp_24 = add i32 %height_count_load, 1" [otsu_evaluator_1/otsu.cpp:169]   --->   Operation 295 'add' 'tmp_24' <Predicate = (tmp_13 & tmp_23) | (!or_cond & tmp_23)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_56 : Operation 296 [1/1] (2.47ns)   --->   "%tmp_25 = icmp eq i32 %tmp_24, 512" [otsu_evaluator_1/otsu.cpp:170]   --->   Operation 296 'icmp' 'tmp_25' <Predicate = (tmp_13 & tmp_23) | (!or_cond & tmp_23)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_56 : Operation 297 [1/1] (0.69ns)   --->   "%p_s = select i1 %tmp_25, i32 0, i32 %tmp_24" [otsu_evaluator_1/otsu.cpp:170]   --->   Operation 297 'select' 'p_s' <Predicate = (tmp_13 & tmp_23) | (!or_cond & tmp_23)> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_56 : Operation 298 [1/1] (0.00ns)   --->   "store i32 %p_s, i32* @height_count, align 4" [otsu_evaluator_1/otsu.cpp:169]   --->   Operation 298 'store' <Predicate = (tmp_13 & tmp_23) | (!or_cond & tmp_23)> <Delay = 0.00>
+ST_56 : Operation 299 [1/1] (1.76ns)   --->   "br label %._crit_edge29" [otsu_evaluator_1/otsu.cpp:173]   --->   Operation 299 'br' <Predicate = (tmp_13 & tmp_23) | (!or_cond & tmp_23)> <Delay = 1.76>
+ST_56 : Operation 300 [2/2] (0.00ns)   --->   "call void @_ssdm_op_Write.axis.volatile.i8P.i1P.i1P.i1P.i1P.i1P.i1P(i8* %OUTPUT_STREAM_V_data_V, i1* %OUTPUT_STREAM_V_keep_V, i1* %OUTPUT_STREAM_V_strb_V, i1* %OUTPUT_STREAM_V_user_V, i1* %OUTPUT_STREAM_V_last_V, i1* %OUTPUT_STREAM_V_id_V, i1* %OUTPUT_STREAM_V_dest_V, i8 %tmp_data_V, i1 %tmp_keep_V, i1 %tmp_strb_V, i1 %tmp_user_V, i1 %tmp_last_V, i1 %tmp_id_V, i1 %tmp_dest_V)" [otsu_evaluator_1/otsu.cpp:175]   --->   Operation 300 'write' <Predicate = (tmp_13) | (!or_cond)> <Delay = 0.00> <Core = "AXI4Stream">   --->   Core 5 'AXI4Stream' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+
+State 57 <SV = 7> <Delay = 6.42>
+ST_57 : Operation 301 [1/2] (3.25ns)   --->   "%scores_load = load i14* %scores_addr_1, align 2" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 301 'load' 'scores_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 14> <Depth = 256> <RAM>
+ST_57 : Operation 302 [1/1] (0.00ns)   --->   "%record_1 = zext i14 %scores_load to i32" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 302 'zext' 'record_1' <Predicate = true> <Delay = 0.00>
+ST_57 : Operation 303 [1/1] (2.47ns)   --->   "%tmp_18 = icmp ugt i32 %record_1, %record" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 303 'icmp' 'tmp_18' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_57 : Operation 304 [1/1] (0.00ns)   --->   "%record_id_1 = zext i9 %count1 to i32" [otsu_evaluator_1/otsu.cpp:157]   --->   Operation 304 'zext' 'record_id_1' <Predicate = true> <Delay = 0.00>
+ST_57 : Operation 305 [1/1] (0.69ns)   --->   "%record_id_2_record_i = select i1 %tmp_18, i32 %record_id_1, i32 %record_id" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 305 'select' 'record_id_2_record_i' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_57 : Operation 306 [1/1] (0.69ns)   --->   "%record_2_record = select i1 %tmp_18, i32 %record_1, i32 %record" [otsu_evaluator_1/otsu.cpp:155]   --->   Operation 306 'select' 'record_2_record' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_57 : Operation 307 [1/1] (0.00ns)   --->   "br label %.preheader" [otsu_evaluator_1/otsu.cpp:154]   --->   Operation 307 'br' <Predicate = true> <Delay = 0.00>
+
+State 58 <SV = 7> <Delay = 0.00>
+ST_58 : Operation 308 [1/1] (0.00ns)   --->   "%width_count_new = phi i32 [ 0, %16 ], [ %tmp_22, %15 ]" [otsu_evaluator_1/otsu.cpp:166]   --->   Operation 308 'phi' 'width_count_new' <Predicate = true> <Delay = 0.00>
+ST_58 : Operation 309 [1/2] (0.00ns)   --->   "call void @_ssdm_op_Write.axis.volatile.i8P.i1P.i1P.i1P.i1P.i1P.i1P(i8* %OUTPUT_STREAM_V_data_V, i1* %OUTPUT_STREAM_V_keep_V, i1* %OUTPUT_STREAM_V_strb_V, i1* %OUTPUT_STREAM_V_user_V, i1* %OUTPUT_STREAM_V_last_V, i1* %OUTPUT_STREAM_V_id_V, i1* %OUTPUT_STREAM_V_dest_V, i8 %tmp_data_V, i1 %tmp_keep_V, i1 %tmp_strb_V, i1 %tmp_user_V, i1 %tmp_last_V, i1 %tmp_id_V, i1 %tmp_dest_V)" [otsu_evaluator_1/otsu.cpp:175]   --->   Operation 309 'write' <Predicate = true> <Delay = 0.00> <Core = "AXI4Stream">   --->   Core 5 'AXI4Stream' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+ST_58 : Operation 310 [1/1] (0.00ns)   --->   "store i32 %width_count_new, i32* @width_count, align 4" [otsu_evaluator_1/otsu.cpp:166]   --->   Operation 310 'store' <Predicate = true> <Delay = 0.00>
+ST_58 : Operation 311 [1/1] (0.00ns)   --->   "ret void" [otsu_evaluator_1/otsu.cpp:176]   --->   Operation 311 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 2.47ns
+The critical path consists of the following:
+	'load' operation ('width_count_load', otsu_evaluator_1/otsu.cpp:31) on static variable 'width_count' [50]  (0 ns)
+	'or' operation ('tmp_1', otsu_evaluator_1/otsu.cpp:31) [52]  (0 ns)
+	'icmp' operation ('tmp_2', otsu_evaluator_1/otsu.cpp:31) [53]  (2.47 ns)
+
+ <State 2>: 3.25ns
+The critical path consists of the following:
+	'phi' operation ('count') with incoming values : ('count', otsu_evaluator_1/otsu.cpp:33) [58]  (0 ns)
+	'getelementptr' operation ('values_addr', otsu_evaluator_1/otsu.cpp:34) [65]  (0 ns)
+	'store' operation (otsu_evaluator_1/otsu.cpp:34) of constant 0 on array 'values' [66]  (3.25 ns)
+
+ <State 3>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('values_load', otsu_evaluator_1/otsu.cpp:39) on array 'values' [75]  (3.25 ns)
+
+ <State 4>: 5.81ns
+The critical path consists of the following:
+	'add' operation ('tmp_7', otsu_evaluator_1/otsu.cpp:39) [76]  (2.55 ns)
+	'store' operation (otsu_evaluator_1/otsu.cpp:39) of variable 'tmp_7', otsu_evaluator_1/otsu.cpp:39 on array 'values' [77]  (3.25 ns)
+
+ <State 5>: 3.25ns
+The critical path consists of the following:
+	'phi' operation ('scoreIter') with incoming values : ('scoreIter', otsu_evaluator_1/otsu.cpp:48) [90]  (0 ns)
+	'getelementptr' operation ('values_addr_2', otsu_evaluator_1/otsu.cpp:49) [97]  (0 ns)
+	'load' operation ('values_load_1', otsu_evaluator_1/otsu.cpp:49) on array 'values' [98]  (3.25 ns)
+
+ <State 6>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('values_load_1', otsu_evaluator_1/otsu.cpp:49) on array 'values' [98]  (3.25 ns)
+
+ <State 7>: 8.51ns
+The critical path consists of the following:
+	'mul' operation ('tmp_12', otsu_evaluator_1/otsu.cpp:49) [100]  (8.51 ns)
+
+ <State 8>: 2.55ns
+The critical path consists of the following:
+	'add' operation ('sum', otsu_evaluator_1/otsu.cpp:49) [101]  (2.55 ns)
+
+ <State 9>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('scoreIter') with incoming values : ('scoreIter', otsu_evaluator_1/otsu.cpp:59) [117]  (1.77 ns)
+
+ <State 10>: 3.25ns
+The critical path consists of the following:
+	'phi' operation ('scoreIter') with incoming values : ('scoreIter', otsu_evaluator_1/otsu.cpp:59) [117]  (0 ns)
+	'getelementptr' operation ('values_addr_3', otsu_evaluator_1/otsu.cpp:60) [127]  (0 ns)
+	'load' operation ('values_load_2', otsu_evaluator_1/otsu.cpp:60) on array 'values' [128]  (3.25 ns)
+
+ <State 11>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('values_load_2', otsu_evaluator_1/otsu.cpp:60) on array 'values' [128]  (3.25 ns)
+
+ <State 12>: 8.51ns
+The critical path consists of the following:
+	'mul' operation ('tmp_21', otsu_evaluator_1/otsu.cpp:60) [129]  (8.51 ns)
+
+ <State 13>: 2.55ns
+The critical path consists of the following:
+	'add' operation ('sum_under_threshold', otsu_evaluator_1/otsu.cpp:60) [130]  (2.55 ns)
+
+ <State 14>: 5.33ns
+The critical path consists of the following:
+	'phi' operation ('scoreIter') with incoming values : ('tmp_19', otsu_evaluator_1/otsu.cpp:66) ('scoreIter', otsu_evaluator_1/otsu.cpp:66) [137]  (0 ns)
+	'add' operation ('scoreIter', otsu_evaluator_1/otsu.cpp:66) [140]  (2.08 ns)
+	'getelementptr' operation ('values_addr_4', otsu_evaluator_1/otsu.cpp:67) [146]  (0 ns)
+	'load' operation ('values_load_3', otsu_evaluator_1/otsu.cpp:67) on array 'values' [147]  (3.25 ns)
+
+ <State 15>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('values_load_3', otsu_evaluator_1/otsu.cpp:67) on array 'values' [147]  (3.25 ns)
+
+ <State 16>: 8.51ns
+The critical path consists of the following:
+	'mul' operation ('tmp_29', otsu_evaluator_1/otsu.cpp:67) [149]  (8.51 ns)
+
+ <State 17>: 2.55ns
+The critical path consists of the following:
+	'add' operation ('sum_over_threshold', otsu_evaluator_1/otsu.cpp:67) [150]  (2.55 ns)
+
+ <State 18>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 19>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 20>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 21>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 22>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 23>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 24>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 25>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 26>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 27>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 28>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 29>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 30>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 31>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 32>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 33>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 34>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 35>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 36>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 37>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 38>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 39>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 40>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 41>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 42>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 43>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 44>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 45>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 46>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 47>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 48>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 49>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 50>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 51>: 4.13ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+
+ <State 52>: 6.21ns
+The critical path consists of the following:
+	'udiv' operation ('tmp_31', otsu_evaluator_1/otsu.cpp:72) [159]  (4.13 ns)
+	'sub' operation ('tmp_33', otsu_evaluator_1/otsu.cpp:78) [164]  (2.08 ns)
+
+ <State 53>: 8.51ns
+The critical path consists of the following:
+	'mul' operation ('tmp1', otsu_evaluator_1/otsu.cpp:78) [166]  (8.51 ns)
+
+ <State 54>: 8.51ns
+The critical path consists of the following:
+	'mul' operation ('tmp_34', otsu_evaluator_1/otsu.cpp:78) [167]  (8.51 ns)
+
+ <State 55>: 7.57ns
+The critical path consists of the following:
+	'add' operation ('tmp_37', otsu_evaluator_1/otsu.cpp:78) [173]  (2.55 ns)
+	multiplexor before 'phi' operation ('computedScore1', otsu_evaluator_1/otsu.cpp:78) with incoming values : ('computedScore_cast', otsu_evaluator_1/otsu.cpp:78) [177]  (1.77 ns)
+	'phi' operation ('computedScore1', otsu_evaluator_1/otsu.cpp:78) with incoming values : ('computedScore_cast', otsu_evaluator_1/otsu.cpp:78) [177]  (0 ns)
+	'store' operation (otsu_evaluator_1/otsu.cpp:94) of variable 'computedScore1', otsu_evaluator_1/otsu.cpp:78 on array 'scores' [180]  (3.25 ns)
+
+ <State 56>: 6.79ns
+The critical path consists of the following:
+	'add' operation ('tmp_22', otsu_evaluator_1/otsu.cpp:166) [211]  (2.55 ns)
+	'icmp' operation ('tmp_23', otsu_evaluator_1/otsu.cpp:167) [212]  (2.47 ns)
+	multiplexor before 'phi' operation ('width_count_new', otsu_evaluator_1/otsu.cpp:166) with incoming values : ('tmp_22', otsu_evaluator_1/otsu.cpp:166) [221]  (1.77 ns)
+
+ <State 57>: 6.43ns
+The critical path consists of the following:
+	'load' operation ('scores_load', otsu_evaluator_1/otsu.cpp:155) on array 'scores' [197]  (3.25 ns)
+	'icmp' operation ('tmp_18', otsu_evaluator_1/otsu.cpp:155) [199]  (2.47 ns)
+	'select' operation ('record_id_2_record_i', otsu_evaluator_1/otsu.cpp:155) [201]  (0.698 ns)
+
+ <State 58>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+	State 36
+	State 37
+	State 38
+	State 39
+	State 40
+	State 41
+	State 42
+	State 43
+	State 44
+	State 45
+	State 46
+	State 47
+	State 48
+	State 49
+	State 50
+	State 51
+	State 52
+	State 53
+	State 54
+	State 55
+	State 56
+	State 57
+	State 58
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

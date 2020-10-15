@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="binarization.cpp" path="C:\Users\Lorenzo\PROGETTI_FPGA\binarization\binarization.cpp"/>
+    <originFiles name="binarization.h" path="C:\Users\Lorenzo\PROGETTI_FPGA\binarization\binarization.h"/>
+  </source>
+  <testbench>
+    <originFiles name="test_bench.cpp" path="C:\Users\Lorenzo\PROGETTI_FPGA\binarization\test_bench.cpp"/>
+    <originFiles name="rods_grayscale.bmp" path="C:\Users\Lorenzo\PROGETTI_FPGA\binarization\rods_grayscale.bmp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

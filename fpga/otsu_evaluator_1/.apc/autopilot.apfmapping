@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="otsu.cpp" path="C:\Users\Lorenzo\PROGETTI_FPGA\otsu_evaluator_1\otsu.cpp"/>
+    <originFiles name="otsu.h" path="C:\Users\Lorenzo\PROGETTI_FPGA\otsu_evaluator_1\otsu.h"/>
+  </source>
+  <testbench>
+    <originFiles name="rods.bmp" path="C:\Users\Lorenzo\PROGETTI_FPGA\otsu_evaluator_1\rods.bmp"/>
+    <originFiles name="rods_dark.bmp" path="C:\Users\Lorenzo\PROGETTI_FPGA\otsu_evaluator_1\rods_dark.bmp"/>
+    <originFiles name="test_bench.cpp" path="C:\Users\Lorenzo\PROGETTI_FPGA\otsu_evaluator_1\test_bench.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

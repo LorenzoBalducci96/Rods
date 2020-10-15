@@ -1,0 +1,8 @@
+<annotationInfo>
+<annotationInfo>
+<item  id="59" filename="binarization/binarization.cpp" linenumber="23" name="tmp_2" contextFuncName="binarization" moduleName="binarization" rtlName="tmp_2_fu_179_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="11" fileDirectory="C:\Users\Lorenzo\PROGETTI_FPGA"><\/item>
+<item  id="60" filename="binarization/binarization.cpp" linenumber="23" name="not_tmp_2" contextFuncName="binarization" moduleName="binarization" rtlName="not_tmp_2_fu_185_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="2" fileDirectory="C:\Users\Lorenzo\PROGETTI_FPGA"><\/item>
+<item  id="61" filename="binarization/binarization.cpp" linenumber="29" name="tmp_data_V_2" contextFuncName="binarization" moduleName="binarization" rtlName="tmp_data_V_2_fu_191_p3" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="2" fileDirectory="C:\Users\Lorenzo\PROGETTI_FPGA"><\/item>
+<item  id="62" filename="binarization/binarization.cpp" linenumber="29" name="tmp_data_V_1" contextFuncName="binarization" moduleName="binarization" rtlName="tmp_data_V_1_fu_198_p3" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="2" fileDirectory="C:\Users\Lorenzo\PROGETTI_FPGA"><\/item>
+<\/annotationInfo>
+</annotationInfo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="contour_finder.cpp" path="C:\Users\Lorenzo\PROGETTI_FPGA\find_contours\contour_finder.cpp"/>
+    <originFiles name="contour_finder.h" path="C:\Users\Lorenzo\PROGETTI_FPGA\find_contours\contour_finder.h"/>
+  </source>
+  <testbench>
+    <originFiles name="rods_a.bmp" path="C:\Users\Lorenzo\PROGETTI_FPGA\find_contours\rods_a.bmp"/>
+    <originFiles name="rods_b.bmp" path="C:\Users\Lorenzo\PROGETTI_FPGA\find_contours\rods_b.bmp"/>
+    <originFiles name="test_benc.cpp" path="C:\Users\Lorenzo\PROGETTI_FPGA\find_contours\test_benc.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

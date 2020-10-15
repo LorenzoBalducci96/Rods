@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="filter.cpp" path="C:\Users\Lorenzo\AppData\Roaming\Xilinx\Vivado\fitler_step_one\filter.cpp"/>
+    <originFiles name="filter.h" path="C:\Users\Lorenzo\AppData\Roaming\Xilinx\Vivado\fitler_step_one\filter.h"/>
+  </source>
+  <testbench>
+    <originFiles name="geeks.bmp" path="C:\Users\Lorenzo\AppData\Roaming\Xilinx\Vivado\fitler_step_one\geeks.bmp"/>
+    <originFiles name="rods.png" path="C:\Users\Lorenzo\AppData\Roaming\Xilinx\Vivado\fitler_step_one\rods.png"/>
+    <originFiles name="rods_grayscale.bmp" path="C:\Users\Lorenzo\AppData\Roaming\Xilinx\Vivado\fitler_step_one\rods_grayscale.bmp"/>
+    <originFiles name="test_bench.cpp" path="C:\Users\Lorenzo\AppData\Roaming\Xilinx\Vivado\fitler_step_one\test_bench.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
